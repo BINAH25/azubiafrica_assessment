@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { defaultTodo } from "../../utils/general.js";
 import useAddTodo from "../../hooks/useAddTodo.js";
 import axios from "axios";
-
+import { BACKEND_URL } from "../../utils/constants.js";
 const AddTodoForm = ({ fetchTodos, page, limit }) => {
   // let [newTodo, setNewTodo] = useState(defaultTodo);
   let [newTodo, setNewTodo] = useState({
@@ -31,7 +31,7 @@ const AddTodoForm = ({ fetchTodos, page, limit }) => {
       const resp1 = await addTodo({ ...newTodo });
       console.log("newTodo display");
 
-      const resp = axios.post("http://localhost:3000/api/todos", newTodo);
+      const resp = axios.post(`${BACKEND_URL}/todos`, newTodo);
       console.log(resp);
     }
     catch (ex) {

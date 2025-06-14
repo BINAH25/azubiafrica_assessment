@@ -1,0 +1,43 @@
+services:
+  frontend:
+    container_name: web
+    build:
+      context: ./Frontend
+      args:
+        VITE_BACKEND_URL: http://localhost:5000
+    ports:
+      - "80:80"
+    networks:
+      - shared-network
+
+  backend:
+    container_name: express
+    build: ./Backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./Backend:/app
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/todo-db
+      - PORT=5000
+    depends_on:
+      - mongo
+    networks:
+      - shared-network
+
+  mongo:
+    image: mongo:7
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - shared-network
+
+volumes:
+  mongo-data:
+
+networks:
+  shared-network:
+    driver: bridge

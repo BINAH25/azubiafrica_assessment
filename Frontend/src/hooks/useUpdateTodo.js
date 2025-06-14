@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CustomErrorAlert } from "../utils/general.js";
+import { BACKEND_URL } from "../utils/constants.js";
 
 const useUpdateTodo = (setTodos) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -8,7 +9,7 @@ const useUpdateTodo = (setTodos) => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        `https://fullstack-todolist-upnv.onrender.com/todos/${todo._id}`,
+        `${BACKEND_URL}/todos/${todo._id}`,
         {
           method: "PUT",
           headers: {

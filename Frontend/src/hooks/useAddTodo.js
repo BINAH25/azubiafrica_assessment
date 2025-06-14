@@ -4,6 +4,7 @@ import {
   CustomErrorAlert,
   defaultTodo,
 } from "../utils/general.js";
+import { BACKEND_URL } from "../utils/constants.js";
 
 const useAddTodos = (fetchTodos, page, limit, setNewTodo) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +13,7 @@ const useAddTodos = (fetchTodos, page, limit, setNewTodo) => {
     try {
       setIsLoading(true);
       const response = await fetch(
-        "http://localhost:3000/api/todos",
+        `${BACKEND_URL}/todos`,
         {
           method: "POST",
           headers: {
