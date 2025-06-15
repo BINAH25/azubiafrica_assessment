@@ -3,7 +3,7 @@ echo "Testing containerized application..."
 
 # Test 1: Check if all containers are running
 echo "1. Checking container status..."
-if docker-compose ps | grep -q "Up"; then
+if docker compose ps | grep -q "Up"; then
     echo "   ✓ Containers are running"
 else
     echo "   ✗ Some containers are not running"
