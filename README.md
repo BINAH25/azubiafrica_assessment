@@ -170,8 +170,8 @@ chmod +x test-containers.sh
 #### Execute the script
 ```bash
 ./test-containers.sh  
-![alt text](image.png)
 ```
+![alt text](image.png)
 
 ## Troubleshooting Guide
 
